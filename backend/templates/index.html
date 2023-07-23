@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+
+
+<html>
+<head>
+    <title>Petals Distributed Model Generator</title>
+</head>
+<body>
+    <h1>Generate Text with Petals Distributed Model</h1>
+    <form action="/generate" method="POST">
+        <label for="input_text">Input Text:</label><br>
+        <input type="text" id="input_text" name="input_text" value="A cat in French is "><br>
+        <label for="max_new_tokens">Max New Tokens:</label><br>
+        <input type="number" id="max_new_tokens" name="max_new_tokens" value="3"><br>
+        <input type="submit" value="Generate">
+    </form>
+    <p id="output_text">{{ output_text }}</p>
+</body>
+</html>
