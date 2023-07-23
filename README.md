@@ -83,9 +83,9 @@ they are applicable for. Such fine-grained model
 versioning is currently uncommon but would be
 straightforward to add to PETALS.
 
-## Possible application Gnosis Chain and Filecoin for PETALS
+## Possible application Gnosis Chain/Polygon/ZkSync or Filecoin for PETALS
 ### 1. Incentives for peers to contribute:
-Use Filecoin's blockchain-based incentive mechanism to encourage peers to provide their GPUs for server use. For each unit of computation they serve, they earn Filecoin tokens which can be used to pay for services or traded for other currencies.
+Use blockchain-based incentive mechanism to encourage peers to provide their GPUs for server use. For each unit of computation they serve, they earn Filecoin tokens which can be used to pay for services or traded for other currencies.
 
 ### 2. Privacy:
 To protect the data used in the PETALS swarm, you could use zk-proof technologies. zk-proof technologies are privacy-preserving methods that allow someone to prove that a statement is true, without revealing any information beyond the validity of the statement itself. This could ensure that even though peers may serve the first layers of a model, they will not be able to glean any information about the input tokens.
@@ -134,3 +134,49 @@ If the disputed server's output matches the audit result, no action is taken, an
 
 ### 8. Continued Operation or Disconnection:
 Post-resolution, if the server's tokens were seized, it needs to re-stake tokens to continue its operation. If it fails to do so, the server is disconnected from the PETALS network.
+
+## Architecture
+
+Scaffold-Eth for Smart Contracts: This is the backbone of the system where the core business logic resides. Smart contracts are developed using the Scaffold-eth, a development stack for Ethereum that includes Solidity, a programming language for writing smart contracts on Ethereum. These contracts handle tasks such as server registration, service provision, dispute resolution, audit processes, and more. They are deployed on the Ethereum blockchain network, providing a transparent and immutable ledger of all transactions and actions.
+
+Python Backend: The backend of the system is developed in Python and serves two primary roles:
+
+Client-side Operations: The backend enables privacy of client input data by implementing zero-knowledge proofs (ZKPs). ZKPs allow a client to prove that they know certain information without revealing that information. In this case, clients can prove they know the input data to the model, without revealing the actual data. This protects sensitive client data during the processing and also when it is in transit.
+
+Server-side Operations: For servers, the backend handles incentives using blockchain technology. When servers contribute their resources (like GPUs for model layer computations), they earn tokens on the blockchain. This provides a monetary incentive for servers to contribute resources to the network. The backend handles the logic of issuing these rewards, keeping track of tokens earned, and handling any transactions needed.
+
+Together, these two components interact to create a system where clients can securely submit data for processing, servers are incentivized to provide their resources for processing, and any disputes are handled fairly and transparently. The use of blockchain technology and smart contracts ensures that all transactions are transparent and verifiable, fostering trust among the users of the system.
+
+## How to run the project
+
+Setting Up Scaffold-Eth:
+
+You'll first need to set up Scaffold-Eth, a development stack for Ethereum.
+
+Step 1: Clone the repository and navigate to the project directory:
+
+`git clone https://github.com/savchart/eth_paris`
+`cd eth_paris`
+
+Step 2: Setup scaffold-eth dependencies:
+
+Run the following command to install the necessary dependencies:
+
+`yarn install`
+`yarn chain`
+`yarn start`
+`yarn deploy`
+
+Step 3: Running the Python Backend:
+
+After setting up the Scaffold-eth, you can run the Python backend.
+
+Step 4: Navigate to the Python project directory:
+
+`cd path-to-python-backend`
+Step 5: Run the application:
+
+`python app.py`
+The server should now be running and waiting for incoming requests.
+
+Make sure to replace "path-to-python-backend" with the actual path to your Python backend project. Note that you might need to adjust firewall settings or other security settings depending on your specific system configuration.
